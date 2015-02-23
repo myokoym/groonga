@@ -3227,6 +3227,7 @@ dump_all_records(grn_ctx *ctx, grn_obj *outbuf)
   }
 }
 
+#ifndef GRN_WITH_MRUBY
 static grn_obj *
 proc_dump(grn_ctx *ctx, int nargs, grn_obj **args, grn_user_data *user_data)
 {
@@ -3252,6 +3253,7 @@ proc_dump(grn_ctx *ctx, int nargs, grn_obj **args, grn_user_data *user_data)
   }
   return NULL;
 }
+#endif /* GRN_WITH_MRUBY */
 
 static grn_obj *
 proc_cache_limit(grn_ctx *ctx, int nargs, grn_obj **args, grn_user_data *user_data)
@@ -6558,8 +6560,10 @@ grn_db_init_builtin_query(grn_ctx *ctx)
   DEF_VAR(vars[0], "max");
   DEF_COMMAND("cache_limit", proc_cache_limit, 1, vars);
 
+#ifndef GRN_WITH_MRUBY
   DEF_VAR(vars[0], "tables");
   DEF_COMMAND("dump", proc_dump, 1, vars);
+#endif /*GRN_WITH_MRUBY */
 
   DEF_VAR(vars[0], "path");
   DEF_COMMAND("register", proc_register, 1, vars);

@@ -5,7 +5,8 @@ SUBDIRS =					\
 	query_expanders				\
 	ruby					\
 	token_filters				\
-	sharding
+	sharding				\
+	dump
 
 EXTRA_DIST =					\
 	CMakeLists.txt

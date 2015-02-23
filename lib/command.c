@@ -21,6 +21,7 @@
 #include "grn.h"
 #include "grn_db.h"
 #include "grn_ctx_impl.h"
+#include "grn_plugin.h"
 
 struct _grn_command_input {
   grn_obj *command;
@@ -192,3 +193,18 @@ grn_command_run(grn_ctx *ctx,
   GRN_API_RETURN(ctx->rc);
 }
 
+#ifdef GRN_WITH_MRUBY
+grn_rc
+grn_db_init_dump_command(grn_ctx *ctx)
+{
+  const char *dump_plugin_name = "dump/dump";
+  char *path;
+  path = grn_plugin_find_path(ctx, dump_plugin_name);
+  if (path) {
+    GRN_FREE(path);
+    return grn_plugin_register(ctx, dump_plugin_name);
+  } else {
+    return GRN_NO_SUCH_FILE_OR_DIRECTORY;
+  }
+}
+#endif /* GRN_WITH_MRUBY */

@@ -1,2 +1,3 @@
 ruby_scripts =				\
-	sharding.rb
+	sharding.rb				\
+	dump.rb
