@@ -1326,19 +1326,19 @@ AM_CONDITIONAL([INSTALL_MUNIN_PLUGINS],
                [test "${install_munin_plugins}" = "yes"])
 
 # platform
-AC_MSG_CHECKING([whether package platform])
-AC_ARG_WITH(package-platform,
-  [AS_HELP_STRING([--with-package-platform=PLATFORM],
-    [install package platform related files. [default=no]
-     (supported package platforms: redhat, fedora)])],
-  [package_platform="$withval"],
-  [package_platform="no"])
-AC_MSG_RESULT($package_platform)
+AC_MSG_CHECKING([whether install system files])
+AC_ARG_WITH(system-files,
+  [AS_HELP_STRING([--with-system-files=SYSTEM],
+    [install system related files. [default=no]
+     (supported systems: init, systemd)])],
+  [install_system_files="$withval"],
+  [install_system_files="no"])
+AC_MSG_RESULT($install_system_files)
 
 AM_CONDITIONAL([REDHAT_PLATFORM],
-               [test "${package_platform}" = "redhat"])
+               [test "${install_system_files}" = "init"])
 AM_CONDITIONAL([FEDORA_PLATFORM],
-               [test "${package_platform}" = "fedora"])
+               [test "${install_system_files}" = "systemd"])
 
 # plugins check
 relative_pluginsdir_base="\$(PACKAGE)/plugins"
