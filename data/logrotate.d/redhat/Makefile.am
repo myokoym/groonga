@@ -1,7 +1,7 @@
 
 logrotate_conf = groonga-server-gqtp groonga-server-http groonga-httpd
 
-if REDHAT_PLATFORM
+if INSTALL_INIT_FILES
 logrotatedir = $(sysconfdir)/logrotate.d
 dist_logrotate_DATA = $(logrotate_conf)
 else

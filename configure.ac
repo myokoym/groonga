@@ -1335,9 +1335,9 @@ AC_ARG_WITH(system-files,
   [install_system_files="no"])
 AC_MSG_RESULT($install_system_files)
 
-AM_CONDITIONAL([REDHAT_PLATFORM],
+AM_CONDITIONAL([INSTALL_INIT_FILES],
                [test "${install_system_files}" = "init"])
-AM_CONDITIONAL([FEDORA_PLATFORM],
+AM_CONDITIONAL([INSTALL_SYSTEMD_FILES],
                [test "${install_system_files}" = "systemd"])
 
 # plugins check

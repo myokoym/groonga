@@ -5,7 +5,7 @@ services =					\
 	groonga-server-gqtp.service		\
 	groonga-httpd.service
 
-if FEDORA_PLATFORM
+if INSTALL_SYSTEMD_FILES
 unitdir = /usr/lib/systemd/system
 dist_unit_DATA = $(services)
 else
